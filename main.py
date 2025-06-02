@@ -1,6 +1,5 @@
 from dotenv import load_dotenv
 from openai import OpenAI
-from datetime import datetime
 import json
 import os
 import subprocess
@@ -242,7 +241,7 @@ while True:
                 # Send result back to model
                 messages.append({
                     "role": "user",
-                    "content": json.dumps({ "step": "observe", "output": result })
+                    "content": json.dumps({ "step": "action", "output": result })
                 })
                 continue
                 
@@ -250,7 +249,7 @@ while True:
                 print(f"❌ Tool execution failed: {str(e)}")
                 messages.append({
                     "role": "user",
-                    "content": json.dumps({ "step": "observe", "output": f"Tool execution failed: {str(e)}" })
+                    "content": json.dumps({ "step": "action", "output": f"Tool execution failed: {str(e)}" })
                 })
                 continue
 
